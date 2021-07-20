@@ -7,9 +7,11 @@ const Timer = () => {
     // Passing in an empty array says 'there are no dependencies to watch
     // after the first render. Don't change if this re-renders!'
     useEffect(() => {
-        setInterval(() => {
+        const intervalID = setInterval(() => {
             setSeconds(seconds => seconds + 1)
         }, 1000)
+
+        return () => clearInterval(intervalID)
     }, [])
     // setInterval(() => {
     //     setSeconds(seconds => seconds + 1)
